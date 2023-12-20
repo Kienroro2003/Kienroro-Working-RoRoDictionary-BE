@@ -6,6 +6,7 @@ import com.example.rorodictionarybe.services.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -60,5 +61,15 @@ public class WordServiceImpl implements WordService {
             return repoWord.save(wordPresent);
         }
         return null;
+    }
+
+    @Override
+    public List<Word> getAll() {
+        return repoWord.findAll();
+    }
+
+    @Override
+    public List<Word> fetchAllWordType() {
+        return repoWord.fetchAllWordType();
     }
 }

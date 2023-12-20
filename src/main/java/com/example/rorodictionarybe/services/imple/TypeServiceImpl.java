@@ -6,6 +6,8 @@ import com.example.rorodictionarybe.services.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TypeServiceImpl implements TypeService {
     @Autowired
@@ -23,5 +25,10 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type update(Long aLong, Type patch) {
         return null;
+    }
+
+    @Override
+    public List<Type> getAll() {
+        return repoType.findAll();
     }
 }

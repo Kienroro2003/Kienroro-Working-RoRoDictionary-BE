@@ -1,23 +1,29 @@
 package com.example.rorodictionarybe.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class Type {
     @Id
+    @NonNull
     private Long id;
     @Column(name = "name_type")
+    @NonNull
     private String nameType;
 
     @ManyToMany(mappedBy = "types")
+    @JsonBackReference
     private Set<Word> words;
 
     @Override
