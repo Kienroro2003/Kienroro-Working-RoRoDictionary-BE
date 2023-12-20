@@ -12,6 +12,7 @@ import java.util.Set;
 public class Word {
     @Id
     private Long id;
+    @Column(name = "word")
     private String word;
     @Column(name = "word_scraping")
     private String wordScraping;
