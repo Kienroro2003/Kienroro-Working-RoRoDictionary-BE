@@ -7,7 +7,7 @@ import jakarta.persistence.Converter;
 public class BooleanConverter implements AttributeConverter<Boolean, String> {
     @Override
     public String convertToDatabaseColumn(Boolean attr) {
-        return attr == null ? "Yes" : "No";
+        return attr == null ? "No" : "Yes";
     }
 
     @Override

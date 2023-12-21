@@ -8,13 +8,16 @@ import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Setter
 @Getter
-public class Type {
+public class Type implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @NonNull
     private Long id;

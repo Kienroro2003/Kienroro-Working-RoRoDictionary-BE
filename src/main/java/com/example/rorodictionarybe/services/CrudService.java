@@ -7,4 +7,6 @@ public interface CrudService <T, ID>{
     T remove(ID id);
     T update(ID id, T patch);
     List<T> getAll();
+
+    T getDetailEntity(ID id);
 }

@@ -31,4 +31,9 @@ public class TypeServiceImpl implements TypeService {
     public List<Type> getAll() {
         return repoType.findAll();
     }
+
+    @Override
+    public Type getDetailEntity(Long aLong) {
+        return null;
+    }
 }

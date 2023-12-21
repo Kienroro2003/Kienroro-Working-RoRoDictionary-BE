@@ -1,5 +1,6 @@
 package com.example.rorodictionarybe.services.imple;
 
+import com.example.rorodictionarybe.dto.word.WordDto;
 import com.example.rorodictionarybe.entities.Word;
 import com.example.rorodictionarybe.repositories.WordRepository;
 import com.example.rorodictionarybe.services.WordService;
@@ -69,7 +70,17 @@ public class WordServiceImpl implements WordService {
     }
 
     @Override
+    public Word getDetailEntity(Long aLong) {
+        return repoWord.findById(aLong).orElse(null);
+    }
+
+    @Override
     public List<Word> fetchAllWordType() {
         return repoWord.fetchAllWordType();
+    }
+
+    @Override
+    public List<WordDto> getWordsOverview() {
+        return repoWord.getListWordOverview();
     }
 }

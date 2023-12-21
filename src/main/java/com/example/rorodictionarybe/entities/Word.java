@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,7 +15,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-public class Word {
+public class Word implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,10 +39,13 @@ public class Word {
     @NonNull
     private String pronoun;
 
-    @Column(name = "flag_used")
+    @Column(name = "flag_used", length = 3)
     @Convert(converter = BooleanConverter.class)
     @NotNull
     private Boolean flagUsed;
+
+    @Column(name = "created_at")
+    private Date createdAt;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "word_type",
@@ -59,5 +66,11 @@ public class Word {
     @Override
     public int hashCode() {
         return 0;
+    }
+
+    @PrePersist
+    void createAt() {
+        this.createdAt = new Date();
+        this.flagUsed = true;
     }
 }
